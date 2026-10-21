@@ -14,7 +14,7 @@ aplicacion.use("/api/articulos", rutasArticulos)
 
 aplicacion.use((error, peticion, respuesta, siguiente)=>{
     const mensaje = error.code === "LIMIT_FILE_SIZE"
-    ? "La imagen es demasiado pesada (maximo 2 MB"
+    ? "La imagen es demasiado pesada (maximo 2 MB)"
 : error.message
 respuesta.status(400).json({error:mensaje})
 })

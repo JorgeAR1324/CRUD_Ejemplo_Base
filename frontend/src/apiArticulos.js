@@ -10,10 +10,10 @@ async function leerRespuesta(respuesta) {
 export const listarArticulos = () => fetch(`${URL_BACKEND}/api/articulos`).then(leerRespuesta)
 
 export const crearArticulo = datosFormulario =>
-    fetch(`${URL_BACKEND}/api/articulos/${id}`, {method: "POST", body: datosFormulario}).then(leerRespuesta)
+    fetch(`${URL_BACKEND}/api/articulos`, {method: "POST", body: datosFormulario}).then(leerRespuesta)
 
 export const editarArticulo = (id, datosFormulario) =>
-    fetch(`${URL_BACKEND}/api/articulos/${id}`, {method: "PUT", body: datosFormulario}).then(editarArticulo)
+    fetch(`${URL_BACKEND}/api/articulos/${id}`, {method: "PUT", body: datosFormulario}).then(leerRespuesta)
 
 export const eliminarArticulo = id =>
-    fetch(`${URL_BACKEND}/api/articulos/${id}`, {method: "DELETE"}).then(eliminarArticulo)
+    fetch(`${URL_BACKEND}/api/articulos/${id}`, {method: "DELETE"}).then(leerRespuesta)

@@ -9,7 +9,7 @@ export default function TarjetaArticulo({articulo, alEditar, alEliminar}){
 
     return(
         <article className="card">
-            {imagen ? <img scr={URL_BACKEND + imagen} alt={nombre} /> : <div className="card__sin-imagen">Sin imagen</div>}
+            {imagen ? <img src={URL_BACKEND + imagen} alt={nombre} /> : <div className="card__sin-imagen">Sin imagen</div>}
             
             <div className="card__cuerpo">
                 <h3>{nombre}</h3>

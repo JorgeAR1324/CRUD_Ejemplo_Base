@@ -24,9 +24,9 @@ function leerCampos(cuerpo){
     }
     let mensajeError = null
     if (!articulo.nombre) mensajeError = "El nombre es obligatorio"
-    else if ((!articulo.precio_compra >= 0 ) || !(articulo.precio_venta >=0)) mensajeError = "Los precios deben ser numeros positivos"
-    else if ((!articulo.stock_minimo >= 0 ) || !(articulo.stock_maximo >=0)) mensajeError = "El stock debe ser un numero positivo"
-    else if (!articulo.stock_minimo > articulo.stock_maximo ) mensajeError = "El stock no puede ser mayor que el maximo"
+    else if (!(articulo.precio_compra >= 0 ) || !(articulo.precio_venta >=0)) mensajeError = "Los precios deben ser numeros positivos"
+    else if (!(articulo.stock_minimo >= 0 ) || !(articulo.stock_maximo >=0)) mensajeError = "El stock debe ser un numero positivo"
+    else if (articulo.stock_minimo > articulo.stock_maximo ) mensajeError = "El stock no puede ser mayor que el maximo"
     return {articulo,mensajeError}
 }
 
@@ -84,10 +84,10 @@ rutas.put("/:id",subirImagen.single("imagen"), conManejoDeErrores(async(peticion
 // Eliminar (Delete) tambien puede borrar la foto en el disco
 rutas.delete("/:id", conManejoDeErrores (async(peticion, respuesta)=>{
     const [filas] = await baseDatos.query("SELECT imagen FROM articulos WHERE id =?", [peticion.params.id])
-    if(!filas,length) return respuesta.status(404).json({error: "Articulo no encontrado"})
+    if(!filas.length) return respuesta.status(404).json({error: "Articulo no encontrado"})
         await baseDatos.query ("DELETE FROM articulos WHERE id = ?", [peticion.params.id])
         borrarImagen(filas[0].imagen)
-    respuesta.json({ok: true})
+    respuesta.json({ok: true})  
 }))
 
 export default rutas

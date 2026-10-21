@@ -18,7 +18,7 @@ const almacenamiento = multer.diskStorage({
         devolver(null, Date.now() + path.extname(archivo.originalname).toLowerCase()),
 })
 
-const LIMITE_MB = 2 // Maximo 2 MB
+const LIMITE_MB = 100 // Maximo 2 MB
 
 export const subirImagen = multer({
     storage: almacenamiento, 

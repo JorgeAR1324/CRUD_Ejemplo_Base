@@ -6,7 +6,7 @@ import mysql from "mysql2/promise"
 
 export const baseDatos = mysql.createPool({
     host: process.env.DB_HOST ?? "localhost",
-    host: process.env.DB_USER ?? "root",
-    host: process.env.DB_PASSWORD ?? "root", // Escribir la clave del gestor MYSQL
-    host: process.env.DB_NAME ?? "tienda"
+    user: process.env.DB_USER ?? "root",
+    password: process.env.DB_PASSWORD ?? "root", // Escribir la clave del gestor MYSQL
+    database: process.env.DB_NAME ?? "tienda"
 })
